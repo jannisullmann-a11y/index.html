@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <!-- Optimierung für Smartphones -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Home</title>
+
+
+    <style>
+
+        /* =====================================
+           GRUNDEINSTELLUNGEN
+        ===================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+
+            -webkit-tap-highlight-color: transparent;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            background: #000000;
+
+            color: #ffffff;
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =====================================
+           HAUPTBEREICH
+        ===================================== */
+
+        .app {
+
+            width: 100%;
+
+            max-width: 500px;
+
+            min-height: 100vh;
+
+            margin: 0 auto;
+
+            padding:
+                35px
+                20px
+                50px;
+        }
+
+
+        /* =====================================
+           ÜBERSCHRIFT
+        ===================================== */
+
+        .header {
+
+            text-align: center;
+
+            margin-bottom: 35px;
+        }
+
+
+        .header h1 {
+
+            font-size: 32px;
+
+            font-weight: 700;
+
+            letter-spacing: -0.5px;
+        }
+
+
+        /* =====================================
+           MENÜ
+        ===================================== */
+
+        .menu {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 14px;
+        }
+
+
+        /* =====================================
+           NORMALE BUTTONS
+        ===================================== */
+
+        .menu-button {
+
+            width: 100%;
+
+            min-height: 65px;
+
+            border:
+
+                1px solid
+                #292929;
+
+            border-radius: 15px;
+
+            background: #111111;
+
+            color: #ffffff;
+
+            font-size: 17px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+
+                background 0.15s ease,
+
+                transform 0.15s ease,
+
+                border-color 0.15s ease;
+        }
+
+
+        .menu-button:hover {
+
+            background: #181818;
+
+            border-color: #3a3a3a;
+        }
+
+
+        .menu-button:active {
+
+            transform: scale(0.97);
+
+            background: #202020;
+        }
+
+
+        /* =====================================
+           LEERE BUTTON-PLATZHALTER
+        ===================================== */
+
+        .empty-button {
+
+            width: 100%;
+
+            height: 65px;
+
+            border:
+
+                1px solid
+                #181818;
+
+            border-radius: 15px;
+
+            background: #080808;
+        }
+
+
+        /* =====================================
+           UNTERSEITEN
+        ===================================== */
+
+        .page {
+
+            display: none;
+
+            animation:
+                pageAppear
+                0.25s
+                ease;
+        }
+
+
+        .page.active {
+
+            display: block;
+        }
+
+
+        /* =====================================
+           ZURÜCK BUTTON
+        ===================================== */
+
+        .back-button {
+
+            background: #111111;
+
+            color: #ffffff;
+
+            border:
+
+                1px solid
+                #292929;
+
+            border-radius: 12px;
+
+            padding:
+                11px
+                17px;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            margin-bottom: 25px;
+
+            transition:
+                background
+                0.15s ease;
+        }
+
+
+        .back-button:hover {
+
+            background: #181818;
+        }
+
+
+        .back-button:active {
+
+            transform: scale(0.97);
+        }
+
+
+        /* =====================================
+           INHALTSBOX
+        ===================================== */
+
+        .content {
+
+            background: #111111;
+
+            border:
+
+                1px solid
+                #292929;
+
+            border-radius: 18px;
+
+            padding: 24px;
+        }
+
+
+        .content h2 {
+
+            font-size: 25px;
+
+            margin-bottom: 22px;
+        }
+
+
+        /* =====================================
+           KONTAKT-EINTRÄGE
+        ===================================== */
+
+        .contact-item {
+
+            padding:
+                15px
+                0;
+
+            border-bottom:
+                1px solid
+                #292929;
+        }
+
+
+        .contact-item:last-of-type {
+
+            border-bottom: none;
+        }
+
+
+        .contact-label {
+
+            display: block;
+
+            color: #777777;
+
+            font-size: 13px;
+
+            margin-bottom: 6px;
+        }
+
+
+        .contact-value {
+
+            display: block;
+
+            color: #ffffff;
+
+            font-size: 17px;
+
+            line-height: 1.5;
+
+            word-break: break-word;
+        }
+
+
+        /* =====================================
+           KONTAKT HINZUFÜGEN BUTTON
+        ===================================== */
+
+        .contact-add-button {
+
+            width: 100%;
+
+            margin-top: 25px;
+
+            padding: 16px;
+
+            border-radius: 15px;
+
+            border: 1px solid #333333;
+
+            background: #ffffff;
+
+            color: #000000;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+
+                transform 0.15s ease,
+
+                background 0.15s ease;
+        }
+
+
+        .contact-add-button:hover {
+
+            background: #eeeeee;
+        }
+
+
+        .contact-add-button:active {
+
+            transform: scale(0.97);
+
+            background: #dddddd;
+        }
+
+
+        /* =====================================
+           NOTFALL-TEXT
+        ===================================== */
+
+        .text-box {
+
+            color: #cccccc;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+        }
+
+
+        .text-box p {
+
+            margin-bottom: 14px;
+        }
+
+
+        .text-box a {
+
+            color: #ffffff;
+
+            text-decoration: underline;
+
+            word-break: break-word;
+        }
+
+
+        /* =====================================
+           LINK-BUTTON
+        ===================================== */
+
+        .emergency-link {
+
+            display: block;
+
+            width: 100%;
+
+            padding: 14px;
+
+            margin-top: 15px;
+
+            background: #191919;
+
+            border:
+
+                1px solid
+                #303030;
+
+            border-radius: 13px;
+
+            color: #ffffff;
+
+            text-decoration: none;
+
+            text-align: center;
+
+            transition:
+
+                background
+                0.15s ease;
+        }
+
+
+        .emergency-link:hover {
+
+            background: #242424;
+        }
+
+
+        /* =====================================
+           ANIMATION
+        ===================================== */
+
+        @keyframes pageAppear {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(8px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+<div class="app">
+
+
+    <!-- =====================================
+         HOME
+    ===================================== -->
+
+    <section
+        id="home"
+        class="page active"
+    >
+
+
+        <header class="header">
+
+            <h1>
+                Home
+            </h1>
+
+        </header>
+
+
+
+        <div class="menu">
+
+
+            <!-- =================================
+                 KONTAKT
+            ================================== -->
+
+            <button
+                class="menu-button"
+                onclick="showPage('kontakt')"
+            >
+                Kontakt
+            </button>
+
+
+
+            <!-- =================================
+                 NOTFALLINFORMATIONEN
+            ================================== -->
+
+            <button
+                class="menu-button"
+                onclick="showPage('notfall')"
+            >
+                Notfallinformationen
+            </button>
+
+
+
+            <!-- =================================
+                 INSTAGRAM
+            ================================== -->
+
+            <button
+                class="menu-button"
+                onclick="openInstagram()"
+            >
+                Instagram
+            </button>
+
+
+
+            <!-- =================================
+                 LEERER BUTTON 1
+            ================================== -->
+
+            <div
+                class="empty-button"
+            ></div>
+
+
+
+            <!-- =================================
+                 LEERER BUTTON 2
+            ================================== -->
+
+            <div
+                class="empty-button"
+            ></div>
+
+
+
+            <!-- =================================
+                 LEERER BUTTON 3
+            ================================== -->
+
+            <div
+                class="empty-button"
+            ></div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================
+         KONTAKT-SEITE
+    ===================================== -->
+
+    <section
+        id="kontakt"
+        class="page"
+    >
+
+
+        <button
+            class="back-button"
+            onclick="showPage('home')"
+        >
+            ← Zurück
+        </button>
+
+
+
+        <div class="content">
+
+
+            <h2>
+                Kontakt
+            </h2>
+
+
+
+            <!-- NAME -->
+
+            <div class="contact-item">
+
+                <span class="contact-label">
+                    Name
+                </span>
+
+                <span class="contact-value">
+                    Jannis Ullmann 
+                </span>
+
+            </div>
+
+
+
+            <!-- TELEFONNUMMER -->
+
+            <div class="contact-item">
+
+                <span class="contact-label">
+                    Telefonnummer
+                </span>
+
+                <span class="contact-value">
+                    004915126002894
+                </span>
+
+            </div>
+
+
+
+            <!-- ADRESSE -->
+
+            <div class="contact-item">
+
+                <span class="contact-label">
+                    Adresse
+                </span>
+
+                <span class="contact-value">
+                 Geranienweg 6, 69412 Eberbach, Germany            
+                </span>
+
+            </div>
+
+
+
+            <!-- E-MAIL -->
+
+            <div class="contact-item">
+
+                <span class="contact-label">
+                    E-Mail
+                </span>
+
+                <span class="contact-value">
+                    Jannisullmann@gmail.com 
+                </span>
+
+            </div>
+
+
+
+            <!-- KONTAKT HINZUFÜGEN -->
+
+            <button
+                class="contact-add-button"
+                onclick="addContact()"
+            >
+                + Zu Kontakten hinzufügen
+            </button>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================
+         NOTFALLINFORMATIONEN
+    ===================================== -->
+
+    <section
+        id="notfall"
+        class="page"
+    >
+
+
+        <button
+            class="back-button"
+            onclick="showPage('home')"
+        >
+            ← Zurück
+        </button>
+
+
+
+        <div class="content">
+
+
+            <h2>
+                Notfallinformationen
+            </h2>
+
+
+
+            <div class="text-box">
+
+
+                <!-- =================================
+                     HIER DEINEN TEXT EINTRAGEN
+                ================================== -->
+
+                <p>
+                    Zöliakie (Glutenunverträglichkeit), Diabetes Typ 1
+                </p>
+
+
+                <p>
+                    
+                </p>
+
+
+
+                <!-- =================================
+                     BEISPIEL LINK
+                ================================== -->
+
+                <a
+                    class="emergency-link"
+                    href="https://example.com"
+                    target="_blank"
+                >
+                    🔗 Wichtige Information
+                </a>
+
+
+
+                <!-- =================================
+                     WEITERER LINK
+                ================================== -->
+
+                <a
+                    class="emergency-link"
+                    href="https://example.com"
+                    target="_blank"
+                >
+                    🔗 Weitere Information
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+</div>
+
+
+
+<script>
+
+
+    /* =====================================
+       SEITENWECHSEL
+    ===================================== */
+
+    function showPage(pageId) {
+
+
+        /*
+         * Alle Seiten finden
+         */
+
+        const pages =
+            document.querySelectorAll(".page");
+
+
+
+        /*
+         * Alle Seiten verstecken
+         */
+
+        pages.forEach(function(page) {
+
+            page.classList.remove("active");
+
+        });
+
+
+
+        /*
+         * Gewünschte Seite anzeigen
+         */
+
+        const selectedPage =
+            document.getElementById(pageId);
+
+
+        selectedPage.classList.add("active");
+
+
+
+        /*
+         * Nach oben scrollen
+         */
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+    }
+
+
+
+    /* =====================================
+       INSTAGRAM
+    ===================================== */
+
+    function openInstagram() {
+
+
+        /*
+         * HIER DEINEN INSTAGRAM-NAMEN
+         * EINTRAGEN
+         */
+
+        window.location.href =
+            "https://www.instagram.com/janfiull/";
+
+    }
+
+
+
+    /* =====================================
+       KONTAKT HINZUFÜGEN
+    ===================================== */
+
+    function addContact() {
+
+
+        /*
+         * HIER DIESE DATEN EINTRAGEN
+         */
+
+        const contact = `
+
+BEGIN:VCARD
+
+VERSION:3.0
+
+FN:Jannis Ullmann 
+
+TEL:004915126002894
+
+EMAIL:Jannisullmann@gmail.com 
+
+ADR:;;Geranienweg 6, 69412 Eberbach, Germany;;;
+
+END:VCARD
+
+`;
+
+
+        /*
+         * Kontaktdatei erstellen
+         */
+
+        const blob = new Blob(
+
+            [contact],
+
+            {
+                type:
+                    "text/vcard;charset=utf-8"
+            }
+
+        );
+
+
+        /*
+         * Temporären Link erstellen
+         */
+
+        const url =
+            URL.createObjectURL(blob);
+
+
+        const link =
+            document.createElement("a");
+
+
+        link.href = url;
+
+        link.download =
+            "Kontakt.vcf";
+
+
+        document.body.appendChild(link);
+
+
+        link.click();
+
+
+        document.body.removeChild(link);
+
+
+        URL.revokeObjectURL(url);
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>
